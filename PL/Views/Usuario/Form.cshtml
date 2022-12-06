@@ -1,0 +1,359 @@
+﻿@model ML.Usuario
+@{
+    ViewData["Title"] = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Form</h2>
+    <div class="row">
+        <div class="col-md-12">
+
+            @using (Html.BeginForm("Form", "Usuario", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+
+                    
+                <div class="form-horizontal">
+                    <div class= "form-group">
+                    <div class="row">
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.IdUsuario, new { @class = "hidden" })
+
+                            @Html.TextBoxFor(model => model.IdUsuario, new { @class = "hidden form-control"})
+                            @Html.ValidationMessageFor(model => model.IdUsuario)
+                    </div>
+                  
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Nombre)
+
+                            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @placeholder = "Ejemplo:Leonardo",@id="txtNombre", @onkeypress = "return SoloLetras(event,'lblNombre')" })
+
+                            @Html.ValidationMessageFor(model => model.Nombre)
+                            @Html.Label("",null, new {@id="lblNombre"})                  
+                    </div>
+                   
+
+                        <div class="col-md-3">
+
+                            @Html.LabelFor(model => model.ApellidoPaterno)
+
+                            @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control", @id="txtApellidoPaterno", @onkeypress = "return SoloLetras(event,'lblApellidoPaterno')" })
+
+                            @Html.ValidationMessageFor(model => model.ApellidoPaterno)
+                             @Html.Label("",null, new {@id="lblApellidoPaterno"})
+                        </div>                 
+                        
+                    
+                        <div class="col-md-3">
+
+                            @Html.LabelFor(model => model.ApellidoMaterno)
+
+                            @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control",@id="txtApellidoMaterno", @onkeypress = "return SoloLetras(event,'lblApellidoMaterno')" })
+
+                            @Html.ValidationMessageFor(model => model.ApellidoMaterno)
+                             @Html.Label("",null, new {@id="lblApellidoMaterno"})
+                         </div>
+                         </div>                 
+                         </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                        <div class="col-md-3">
+
+                            @Html.LabelFor(model => model.FechaNacimiento)
+
+                            @Html.TextBoxFor(model => model.FechaNacimiento, new { @class = "form-control" , @id="txtFechaNacimiento"})
+
+                            @Html.ValidationMessageFor(model => model.FechaNacimiento)
+
+                        </div>
+                        <div class="col-md-3">
+
+                            @Html.LabelFor(model => model.Sexo)
+
+@*                            @Html.TextBoxFor(model => model.Sexo, new { @class = "form-control" })
+*@                          
+
+                           @Html.RadioButtonFor(model => model.Sexo,"Masculino")
+
+                           @Html.RadioButtonFor(model => model.Sexo,"Femenino")
+
+                            @Html.ValidationMessageFor(model => model.Sexo)
+                        </div>
+                        
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Curp) 
+
+                            @Html.TextBoxFor(model => model.Curp, new { @class = "form-control",@id="txtCurp", @onkeypress = "return SoloCurp(event,'lblCurp')" })
+
+                            @Html.ValidationMessageFor(model => model.Curp)
+                            @Html.Label("",null, new {@id="lblCurp"})
+                        </div>
+                        <div class="col-md-3">
+                            @Html.LabelFor(model => model.Password) 
+
+                            @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @type = "password",@id="txtPassword"})
+
+                            @Html.ValidationMessageFor(model => model.Password)
+
+                        </div>
+                        </div>
+                        </div>
+                   
+                        <div class="form-group">
+                        <div class="row">
+                        <div class="col-md-3">
+                      
+                      
+                            @Html.LabelFor(model => model.UserName) 
+
+                            @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", @id="txtUsername", @onkeypress = "return SoloUser(event,'lblUsername')" })
+
+                            @Html.ValidationMessageFor(model => model.UserName)
+                             @Html.Label("",null, new {@id="lblUsername"})
+                        </div>
+
+                        <div class="col-md-3">
+
+                            @Html.LabelFor(model => model.Email) 
+
+                            @Html.TextBoxFor(model => model.Email, new { @class = "form-control",@id="txtEmail", @onkeypress = "return SoloEmail(event,'lblEmail')" })
+
+                            @Html.ValidationMessageFor(model => model.Email)
+                            @Html.Label("",null, new {@id="lblEmail"})
+
+                    </div>
+
+                        <div class="col-md-3">
+
+                            @Html.LabelFor(model => model.Telefono) 
+
+                            @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control",@id="txtTelefono", @onkeypress = "return SoloNumeros(event,'lblTelefono')" })
+
+                            @Html.ValidationMessageFor(model => model.Telefono)
+                             @Html.Label("",null, new {@id="lblTelefono"})
+                        </div>
+
+                    
+                        <div class="col-md-3">
+
+                            @Html.LabelFor(model => model.Celular) 
+
+                            @Html.TextBoxFor(model => model.Celular, new { @class = "form-control",@id="txtCelular", @onkeypress = "return SoloNumeros(event,'lblCelular')" })
+
+                            @Html.ValidationMessageFor(model => model.Celular)
+                             @Html.Label("",null, new {@id="lblCelular"})
+                        </div>
+                        </div>
+                    </div></div>
+
+
+                    <div class="form-group">
+                        <div class="row">
+                        <div class="col-md-3">
+
+                                @Html.LabelFor(model => model.Rol.Nombre)
+
+@*                                @Html.TextBoxFor(model => model.Semestre.IdSemestre, new { @class = "form-control" })
+*@
+                                @Html.DropDownListFor(model => model.Rol.Nombre, new SelectList(Model.Rol.Rols, "IdRol", "Nombre"), "Selecciona una opción", new { @class = "form-control" })
+
+                               @Html.ValidationMessageFor(model => model.Rol.Nombre )
+
+                        </div>
+
+            
+               @*  <div class="col-md-3">
+
+                            @Html.LabelFor(model => model.Direccion.Colonia.Municipio.Estado.Pais.NombrePais)
+
+                            @Html.DropDownListFor(model => model.Direccion.Colonia.Municipio.Estado.Pais.NombrePais, new SelectList(Model.Direccion.Colonia.Municipio.Estado.Pais.Paises, "IdPais", "Nombre"), "Selecciona tu pais", new { id = "ddlPais",  @class = "form-control" })
+
+                            @Html.ValidationMessageFor(model => model.Direccion.Colonia.Municipio.Estado.Pais.NombrePais)
+
+                        </div>*@
+                     
+
+
+@*
+                       <div class="col-md-3">
+
+                            <div class="form-group">
+                                
+
+                                    @Html.LabelFor(model => model.Direccion.Colonia.Municipio.Estado.IdEstado)
+                                    @if (Model.Direccion.Colonia.Municipio.Estado.Estados == null)
+                                    {
+                                        @Html.DropDownListFor(model => model.Direccion.Colonia.Municipio.Estado.IdEstado, new SelectList(string.Empty, "Value", "Text"), "Seleciona un grupo", htmlAttributes: new { id = "ddlEstado", @class = "form-control" })
+                                    }
+
+                                    else
+                                    {
+                                        @Html.DropDownListFor(model => model.Estado.IdEstado, new SelectList(Model.Direccion.Colonia.Municipio.Estado.Estados, "IdEstado", "Nombre"), "Seleciona un grupo", htmlAttributes: new { id = "ddlEstado", @class = "form-control" })
+                                    }
+
+                            </div>*@
+
+                       
+
+
+                    @*</div>*@
+
+                        <div class="col-md-3">
+                            <input type="submit" value="Guardar" class="btn btn-success" />
+
+                            @Html.ActionLink("Regresar", "GetAll", "Usuario", htmlAttributes: new { @class = "btn btn-danger" })
+                        </div>
+                        </div>
+                    </div>
+
+
+            }
+
+        </>
+
+    </div>
+</div>
+@section Scripts
+{
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script type="text/javascript">
+                   $( function() {
+      $( "#txtFechaNacimiento" ).datepicker({dateFormat: 'dd-mm-yy',
+                                  changeMonth: true,
+                                  changeYear: true, yearRange: '-122:+0'});
+    } );
+
+    //NUMEROS
+    function SoloNumeros(e, controlId) {
+        var caracter = e.key;
+        if (!/^[0-9]/g.test(caracter)) {
+            $('#' + controlId).text("Escriba solamente numeros");
+            $('#' + controlId).css({ "color": "red" });
+            return false;
+        }
+        else {
+            $('#' + controlId).text("");
+            return true;
+        }
+         }
+
+    //LETRAS
+ function SoloLetras(e, controlId) {
+        var caracter = e.key;
+        if (!/^[a-zA-Z ]+$/.test(caracter)) {
+            $('#' + controlId).text("Escriba solamente letras");
+            $('#' + controlId).css({ "color": "red" });
+            return false;
+        }
+        else {
+            $('#' + controlId).text("");
+            return true;
+        }
+         }
+
+         //CURP 
+        function SoloCurp(e, controlId) {
+        var regex = /^[A-Z0-9]+$/;
+        var caracter=e.key;
+        if (regex.test(caracter)) {
+            $('#').css({"color": "red" });
+            $('#' + controlId).text("");
+            return true;
+        }
+        else {
+            $('#' + controlId).text("Ingrese solo letras y numeros");
+           $('#' + controlId).css({"color": "red"})
+            return false;
+        }
+         }   
+         
+
+
+//         //PASSWORD
+//         $(function SoloUser(e,controlId) {
+
+//  $.validator.addMethod("passwordcheck", function(value) {
+//    return /^[a-zA-Z0-9!+@@#$%^&()=[]{};':"\|,.<>\/?+-]+$/.test(value) 
+//    && /[a-z]/.test(value) // has a lowercase letter 
+//    && /\d/.test(value)//has a digit 
+//    && /[!+@@#$%^&()=[]{};':"\|,.<>\/?+-]/.test(value)// has a special character
+//  },"La contraseña debe contener de 8 a 15 carácteres alfanuméricos (a-z A-Z), contener mínimo un dígito (0-9) y un carácter especial (_-=)."  
+//  );
+
+//  $("#formregistro").validate({
+//    rules: {
+//      contrasena: {required:true,minlength:8,maxlength:15,passwordcheck:true },
+//      contrasenaconfirmar: {required:true,equalTo:"#contrasena",passwordcheck:true }
+//    },
+//    messages: {
+//      contrasena: "Formato contraseña incorrecto.",
+//      contrasenaconfirmar: "Formato contraseña incorrecto."
+//    },
+//    errorLabelContainer: "dt",
+//    wrapper: "dd"
+//  });
+//});
+
+   //function SoloEmail(e, controlId) {
+   //         var regex = /^[a-zA-Z0-9._]+[a-zA-Z0-9]+@@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/;
+   //         var caracter = e.key;
+   //         if (regex.test(caracter)) 
+   //         {
+   //             $('#email').css({ "color": "green" });
+   //             $('#' + controlId).text("");
+   //             return true;
+   //         }
+   //         else 
+   //         {
+            
+   //            $('#' + controlId).css({ "color": "red" });
+           
+   //             return false;
+   //         }
+   //      } 
+   //      $('#inputTXT_Email, #inputTXT_EmailConfirm').on('blur keyup', function () {
+   //         var regex = /^[a-zA-Z0-9._]+[a-zA-Z0-9]+@@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}$/;
+
+   //         var value1 = $('#inputTXT_EmailConfirm').val();
+   //         if (regex.test(this.value) && $('#inputTXT_Email').val() == $('#inputTXT_EmailConfirm').val()) {
+   //             $('#alert_Email').html('');
+   //             $('#alert_EmailConfirm').html('Los correos coinciden').attr('class', 'text-success');
+   //         }
+   //         else if (regex.test(this.value)) {
+   //             $('#alert_Email').html('');
+   //             $('#alert_EmailConfirm').html('Los correos no coinciden').attr('class', 'text-danger');
+   //         }
+   //         else if (regex.test($('#inputTXT_Email').val()) && !regex.test(value1)) {
+   //             $('#alert_Email').html('');
+   //             $('#alert_EmailConfirm').html('El correo es inválido').attr('class', 'text-danger');
+   //         }
+   //         else {
+   //             $('#alert_Email').html('El correo es inválido');
+   //             $('#alert_EmailConfirm').html('Los correos no coinciden').attr('class', 'text-danger');
+   //         }
+   //     });
+
+    //        EMAIL
+    //     function mailValidation(e, controlId) {
+    //var caracter =(!/^([\w-\.]+)((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/,.test(caracter));
+
+    //if (!expr.test(caracter)) {
+    //    $('#').text('Ingrese un email valido');
+    //}
+    //else {
+    //    $('#errEmail').hide();
+    //}
+    
+</script>
+}
+
+
+
+      
+
+        

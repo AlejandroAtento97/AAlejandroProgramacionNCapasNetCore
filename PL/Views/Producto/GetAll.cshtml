@@ -1,0 +1,73 @@
+﻿@model ML.Producto
+
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class=row>
+        <div class="text-center">
+            <h2>Productos</h2>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h5>Seleccione un usuario para editarlo o + para agregar...</h5>
+            <hr />
+        </div>
+    </div>
+
+</div>
+
+<div style="float:right;">
+    @Html.ActionLink("+", "Form", "Producto", htmlAttributes: new { @class = "btn btn-success" })
+</div>
+
+<br />
+<table class="table   table-hover table-bordered table-responsive">
+    <thead>
+        <tr class="table-secondary">
+            <td>Editar</td>
+            <td style="display :none;">IdProducto</td>
+            <td>Nombre</td>
+            <td>PrecioUnitario</td>
+            <td>Stock</td>
+            <td style="display :none;">IdProveedor</td>
+            <td style="display :none;">IdDepartamento</td>
+             <td>Descripcion</td>
+             <td>Proveedor</td>
+            <td>Departamento </td>
+@*             <td>Imagen</td>
+*@             
+            <td>Eliminar</td>
+        
+     </tr>
+    </thead>
+    <tbody>
+        @foreach (ML.Producto producto in Model.Productos)
+        {
+            <tr>
+                <td style="text-align: center; vertical-align: middle;"><a class="btn btn-warning glyphicon" href="@Url.Action("Form", "Producto", new { IdProducto = producto.IdProducto})"><i class="bi bi-pencil-square" style="color: ivory"></i></a></td>
+               
+                       <td style="display :none;">@producto.IdProducto</td>
+                        <td>@producto.Nombre </td>
+                        <td>@producto.PrecioUnitario</td>
+                        <td>@producto.Stock  </td>
+                        <td style="display :none;">@producto.Proveedor.IdProveedor</td>
+                        <td style="display :none;">@producto.Departamento.IdDepartamento</td>
+                        <td>@producto.Descripcion </td>
+                        <td>@producto.Proveedor.Nombre</td>
+                        <td>@producto.Departamento.Nombre</td>
+@*                        <td>@producto.Imagen</td>
+*@                       
+                      
+              
+                <td style="text-align: center; vertical-align: middle;"><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Producto", new { IdProducto= producto.IdProducto})" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"><i class="bi bi-eraser-fill" style="color: mintcream"></i></a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
